@@ -12,9 +12,9 @@ public class ProjectSteps {
 
     public void project(String name) {
         ProjectPage projectPage = new ProjectPage(driver, true);
+
         projectPage.getNameField().sendKeys(name);
-        projectPage.getRadioButton().click();
-        projectPage.getButton().click();
+        projectPage.getButton().submit();
 
     }
 

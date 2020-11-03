@@ -3,6 +3,7 @@ import dataprovider.TestsDataProvider;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.*;
+import utils.Retry;
 
 public class MainTest extends BaseTest {
     private LoginSteps loginSteps;
@@ -132,4 +133,7 @@ public class MainTest extends BaseTest {
 //
 //    }
 
-}
+//    @Test(retryAnalyzer = Retry.class)
+//    public void retryTest(){
+//        throw new NullPointerException();
+    }

@@ -21,7 +21,7 @@ public class EditPageSteps {
         final WebElement nameField = editPage.getNameField();
         nameField.clear();
         nameField.sendKeys(newName);
-        editPage.getButton().click();
+        editPage.getButton().submit();
     }
 
 

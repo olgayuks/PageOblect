@@ -8,8 +8,8 @@ import org.openqa.selenium.WebElement;
 public class ProjectPage extends BasePage {
     private static String EndPoint = "/admin/projects/add/1";
 
+
     protected By nameSelector = By.id("name");
-    protected By radioButtonSelector = By.id("suite_mode_single");
     protected By buttonSelector = By.id("accept");
     protected By Error_MessageSelector = By.xpath("//div[contains(text(),'required field.')]");
 
@@ -37,10 +37,6 @@ public class ProjectPage extends BasePage {
         return driver.findElement(nameSelector);
     }
 
-    public WebElement getRadioButton() {
-
-        return driver.findElement(radioButtonSelector);
-    }
 
     public WebElement getButton() {
 

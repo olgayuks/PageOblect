@@ -4,7 +4,7 @@ import browserService.ReadProperties;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
-    protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 5;
+    protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 10;
     public WebDriver driver;
     public ReadProperties readProperties;
     public String BASE_URL;
