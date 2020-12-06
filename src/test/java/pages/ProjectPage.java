@@ -12,6 +12,7 @@ public class ProjectPage extends BasePage {
     protected By nameSelector = By.id("name");
     protected By buttonSelector = By.id("accept");
     protected By Error_MessageSelector = By.xpath("//div[contains(text(),'required field.')]");
+    protected By checkbox_selector = By.id("show_announcement");
 
     public ProjectPage(WebDriver driver, boolean openPageByUrl) {
         super(driver, openPageByUrl);
@@ -34,19 +35,22 @@ public class ProjectPage extends BasePage {
 
     public WebElement getNameField() {
 
-        return driver.findElement(nameSelector);
+        return waits.getNameField(By.id("name"));
     }
 
 
     public WebElement getButton() {
-
-        return driver.findElement(buttonSelector);
+        return waits.getClickableButton(buttonSelector);
     }
 
 
     public String getError_Message() {
 
         return driver.findElement(Error_MessageSelector).getText();
+    }
+
+    public boolean isCheckboxUnselected() {
+        return waits.checkCheckboxState(checkbox_selector, false);
     }
 
 }

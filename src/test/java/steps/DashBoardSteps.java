@@ -11,6 +11,7 @@ public class DashBoardSteps {
     }
     public void dash(){
         DashboardPage dashboardPage = new DashboardPage(driver, true);
+        System.out.println(dashboardPage.isTitleContainsAllProject());
         dashboardPage.getAddProjectButton().click();
     }
 }
