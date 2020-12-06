@@ -1,5 +1,8 @@
 import baseEntities.BaseTest;
 import dataprovider.TestsDataProvider;
+import io.qameta.allure.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.*;
@@ -10,7 +13,7 @@ public class MainTest extends BaseTest {
     private DashBoardSteps dashBoardSteps;
     private ProjectSteps projectSteps;
     private AdminSteps adminSteps;
-
+    private static final Logger logger = LogManager.getLogger(MainTest.class);
 //    @Test(priority = 4)
 //    public void loginPositiveTest() {
 //        loginSteps = new LoginSteps(driver);
@@ -62,6 +65,9 @@ public class MainTest extends BaseTest {
 
     @Test(dataProvider = "loginCredentialSource", dataProviderClass = TestsDataProvider.class, priority = 0)
     public void loginTest(String username, String psw) {
+        logger.info("Info");
+        logger.debug("Debug");
+        logger.error("Error");
         loginSteps = new LoginSteps(driver);
         loginSteps.login(username, psw);
     }
@@ -111,7 +117,11 @@ public class MainTest extends BaseTest {
         editPageSteps.editProject(projectName);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, description = "for allure")
+    @Description("Немного деталей по тесту")
+    @Link("https://aqa07.atlassian.net/browse/AQA07-25")
+    @TmsLink("1")
+    @Severity(SeverityLevel.BLOCKER)
     public void deleteProjectFromAdminPageTest() {
         adminSteps = new AdminSteps(driver);
         adminSteps.deleteProject();

@@ -45,6 +45,7 @@ public class AdminPage extends BasePage {
     }
 
     public WebElement getOkButtonSelector() {
+
         return driver.findElement(okButtonSelector);
     }
 

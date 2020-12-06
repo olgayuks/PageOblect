@@ -1,5 +1,7 @@
 package browserService;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,6 +11,7 @@ import java.io.File;
 
 public class BrowserService {
     private WebDriver driver = null;
+    private DriverManagerType driverManagerType =null;
 
     public BrowserService() {
         ReadProperties readProperties = new ReadProperties();
@@ -16,11 +19,12 @@ public class BrowserService {
 
         switch (browserName.toLowerCase()) {
             case "chrome":
-                ClassLoader classLoader = getClass().getClassLoader();
-                File file = new File(classLoader.getResource("drivers/chromedriver.exe").getFile());
-                String absolutePath = file.getAbsolutePath();
+//                ClassLoader classLoader = getClass().getClassLoader();
+//                File file = new File(classLoader.getResource("drivers/chromedriver.exe").getFile());
+//                String absolutePath = file.getAbsolutePath();
 
-                System.setProperty("webdriver.chrome.driver", absolutePath);
+                driverManagerType = DriverManagerType.CHROME;
+                WebDriverManager.getInstance(driverManagerType).setup();
 
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--disable-gpu");
@@ -32,11 +36,12 @@ public class BrowserService {
             break;
 
             case "firefox":
-                classLoader = getClass().getClassLoader();
-                file = new File(classLoader.getResource("drivers/geckodriver.exe").getFile());
-                absolutePath = file.getAbsolutePath();
+//                classLoader = getClass().getClassLoader();
+//                file = new File(classLoader.getResource("drivers/geckodriver.exe").getFile());
+//                absolutePath = file.getAbsolutePath();
 
-                System.setProperty("webdriver.gecko.driver", absolutePath);
+                driverManagerType = DriverManagerType.FIREFOX;
+                WebDriverManager.getInstance(driverManagerType).setup();
                 driver = new FirefoxDriver();
                 break;
 

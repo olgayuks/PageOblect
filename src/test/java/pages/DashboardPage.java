@@ -2,13 +2,16 @@ package pages;
 
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class DashboardPage extends BasePage {
     private static String END_POINT = "/dashboard";
 
     protected By addProjectButton = By.id("sidebar-projects-add");
+    protected By buttonProjectLink = By.linkText("MainProject");
 
     public DashboardPage(WebDriver driver, boolean openPageByUrl) {
 
@@ -32,7 +35,24 @@ public class DashboardPage extends BasePage {
 
     public WebElement getAddProjectButton() {
 
-        return driver.findElement(addProjectButton);
+        return waits.getClickableButton(By.id("sidebar-projects-add"));
     }
+
+    public boolean isTitleContainsAllProject() {
+
+        return waits.isTitleContains("All Projects");
+
+    } public WebElement getButtonProjectLink() {
+
+        return waits.getElementBy(buttonProjectLink);
+    }
+    public void clickButtonProjectLink(){
+        WebElement webElement = getButtonProjectLink();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//        jsExecutor.executeScript("arguments[0].scrollIntoView(true)", webElement);
+        jsExecutor.executeScript("arguments[0].click;", webElement);
+//        webElement.click();
+    }
+
 
 }

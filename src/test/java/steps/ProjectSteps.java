@@ -13,6 +13,7 @@ public class ProjectSteps {
     public void project(String name) {
         ProjectPage projectPage = new ProjectPage(driver, true);
 
+        System.out.println(projectPage.isCheckboxUnselected());
         projectPage.getNameField().sendKeys(name);
         projectPage.getButton().submit();
 
